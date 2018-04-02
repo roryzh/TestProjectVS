@@ -2,7 +2,11 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
+@*
 @model TestProject.Models.Property
+*@
+
+@model List<TestProject.Models.Property>
 
 
 <!--    ViewBag.Title = "DisplayProperties";-->
@@ -13,20 +17,57 @@
 }
 
 <h2>Overview</h2>
+
+<input class="form-control" 
+        id="StudentName" 
+        name="StudentName" 
+        type="text" 
+        value="" />
+
+<a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">Search</a>
+
+@Html.TextBox("StudentName", null, new { @class = "form-control" })  
+
 <table style="width:100%">
   <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
+    <th>Address</th>
+    <th>Year</th> 
+    <th>Sqft</th>
+    <th>Bedroom</th>
+    <th>Bathroom</th> 
+    <th>Price($)</th>
   </tr>
-  <tr>
-    <td>@Model.Address</td>
-    <td>Smith</td> 
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>
+  @foreach(var property in Model)
+  {
+      <tr>
+        <td>@property.Address</td>
+        <td>@property.Year</td>
+        <td>@property.Sqft</td>
+        <td>@property.Bedroom</td>
+        <td>@property.Bathroom</td>
+        <td>@property.Price</td>
+        
+      </tr>
+    
+    @*
+      <tr>
+        <td>property</td>
+        <td>Jackson</td> 
+        <td>94</td>
+      </tr>
+    *@
+   }
 </table>
+
+
+@*
+<table>
+    @foreach( var property in Model )
+    {
+        <tr>
+        <td>Arrival Name</td>
+        <td>@property.Address</td>            
+    </tr>
+    }
+</table>
+*@
