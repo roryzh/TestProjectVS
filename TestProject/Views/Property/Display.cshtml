@@ -3,14 +3,12 @@
 *@
 
 @*
-@model TestProject.Models.Property
+    @model TestProject.Models.Property
 *@
 
 @model List<TestProject.Models.Property>
-
-
 <!--    ViewBag.Title = "DisplayProperties";-->
- 
+
 
 @{
     ViewData["Title"] = "Display";
@@ -18,56 +16,69 @@
 
 <h2>Overview</h2>
 
-<input class="form-control" 
-        id="StudentName" 
-        name="StudentName" 
-        type="text" 
-        value="" />
+<input class="form-control"
+       id="StudentName"
+       name="StudentName"
+       type="text"
+       value="" />
 
 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">Search</a>
 
-@Html.TextBox("StudentName", null, new { @class = "form-control" })  
+@Html.TextBox("StudentName", null, new { @class = "form-control" })
+
+@*
+        <button class="btn btn-info" type="button" id="addressSearch"
+                onclick="location.href='@Url.Action("List", "Search")'">
+
+    @Html.ActionLink("getData", "getData", "PropertyController", new { @class = "btn btn-default", @id = "addressSearch" })
+*@
+@Html.ActionLink("getData", "getData", "Controllers/PropertyController")
+
+@using (Html.BeginForm("getData", "Property"))
+{
+    <button type="submit">OK</button>
+}
 
 <table style="width:100%">
-  <tr>
-    <th>Address</th>
-    <th>Year</th> 
-    <th>Sqfts</th>
-    <th>Bedroom</th>
-    <th>Bathroom</th> 
-    <th>Price($)</th>
-  </tr>
-  @foreach(var property in Model)
-  {
-      <tr>
-        <td>@property.Address</td>
-        <td>@property.Year</td>
-        <td>@property.Sqft</td>
-        <td>@property.Bedroom</td>
-        <td>@property.Bathroom</td>
-        <td>@property.Price</td>
-        
-      </tr>
-    
-    @*
-      <tr>
-        <td>property</td>
-        <td>Jackson</td> 
-        <td>94</td>
-      </tr>
-    *@
-   }
+    <tr>
+        <th>Address</th>
+        <th>Year</th>
+        <th>Sqfts</th>
+        <th>Bedroom</th>
+        <th>Bathroom</th>
+        <th>Price($)</th>
+    </tr>
+    @foreach (var property in Model)
+    {
+        <tr>
+            <td>@property.Address</td>
+            <td>@property.Year</td>
+            <td>@property.Sqft</td>
+            <td>@property.Bedroom</td>
+            <td>@property.Bathroom</td>
+            <td>@property.Price</td>
+
+        </tr>
+
+        @*
+            <tr>
+              <td>property</td>
+              <td>Jackson</td>
+              <td>94</td>
+            </tr>
+        *@
+    }
 </table>
 
 
 @*
-<table>
-    @foreach( var property in Model )
-    {
-        <tr>
-        <td>Arrival Name</td>
-        <td>@property.Address</td>            
-    </tr>
-    }
-</table>
+    <table>
+        @foreach( var property in Model )
+        {
+            <tr>
+            <td>Arrival Name</td>
+            <td>@property.Address</td>
+        </tr>
+        }
+    </table>
 *@
