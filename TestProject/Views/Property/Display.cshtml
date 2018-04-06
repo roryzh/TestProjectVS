@@ -22,22 +22,25 @@
        type="text"
        value="" />
 
-<a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">Search</a>
-
-@Html.TextBox("StudentName", null, new { @class = "form-control" })
-
 @*
-        <button class="btn btn-info" type="button" id="addressSearch"
-                onclick="location.href='@Url.Action("List", "Search")'">
+    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">Search</a>
+        @Html.TextBox("StudentName", null, new { @class = "form-control" })
 
-    @Html.ActionLink("getData", "getData", "PropertyController", new { @class = "btn btn-default", @id = "addressSearch" })
+
+                    <button class="btn btn-info" type="button" id="addressSearch"
+                            onclick="location.href='@Url.Action("List", "Search")'">
+
+                @Html.ActionLink("getData", "getData", "PropertyController", new { @class = "btn btn-default", @id = "addressSearch" })
+
+            @Html.ActionLink("getData", "getData", "Controllers/PropertyController")
 *@
-@Html.ActionLink("getData", "getData", "Controllers/PropertyController")
 
 @using (Html.BeginForm("getData", "Property"))
+   
 {
-    <button type="submit">OK</button>
+    <button class="btn btn-default" type="submit">Search</button>
 }
+
 
 <table style="width:100%">
     <tr>
